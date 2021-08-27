@@ -20,6 +20,9 @@ The default path separator is `/`, and it can be customized using:
 
     zstyle ':zim:prompt-pwd:separator' format '%F{magenta}/%f'
 
+You can include [prompt expansion escape sequences] in your custom separator
+format.
+
 Theming
 -------
 
@@ -35,3 +38,5 @@ zstyle ':zim:prompt-pwd:separator' format '❯'
 
 PS1='$(prompt-pwd)❯ '
 ```
+
+[prompt expansion escape sequences]: http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes

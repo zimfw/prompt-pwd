@@ -16,6 +16,7 @@ if [[ ${dir_length} -gt 0 || ${separator} != '/' ]]; then
   if (( dir_length > 0 && ${#current_dirs} > 2 )); then
     current_dirs[2,-2]=("${(@M)current_dirs[2,-2]##.#?(#c,${dir_length})}")
   fi
+  separator=${(e)separator}
   current_dir="${(@pj:$separator:)current_dirs}"
 fi
 print -Rn ${current_dir}
