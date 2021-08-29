@@ -12,13 +12,13 @@ Use the following zstyle to enable truncating the path to the git root when in a
 
 To customize the maximum number of characters per path component, use:
 
-    zstyle ':zim:prompt-pwd:fish-style' dir-length 1
+    zstyle ':zim:prompt-pwd:fish-style' dir-length <value>
 
 Setting the value to 0 will disable shortening entirely, which is the default behavior.
 
 The default path separator is `/`, and it can be customized using:
 
-    zstyle ':zim:prompt-pwd:separator' format '%F{magenta}/%f'
+    zstyle ':zim:prompt-pwd:separator' format '<format>'
 
 You can include [prompt expansion escape sequences] in your custom separator
 format.
@@ -33,7 +33,7 @@ directory to be displayed. Here's an example:
 setopt nopromptbang prompt{cr,percent,sp,subst}
 
 zstyle ':zim:prompt-pwd' git-root yes
-zstyle ':zim:prompt-pwd' fish-style-dir-length 2
+zstyle ':zim:prompt-pwd:fish-style' dir-length 1
 zstyle ':zim:prompt-pwd:separator' format '❯'
 
 PS1='$(prompt-pwd)❯ '
