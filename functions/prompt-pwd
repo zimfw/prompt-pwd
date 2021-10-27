@@ -5,7 +5,7 @@ local git_root current_dir separator
 local -i dir_length
 if zstyle -t ':zim:prompt-pwd' git-root && \
     git_root=$(command git rev-parse --show-toplevel 2>/dev/null); then
-  current_dir="${PWD#${git_root:h}/}"
+  current_dir="${$(pwd -P)#${git_root:h}/}"
 else
   current_dir=${(%):-%~}
 fi
