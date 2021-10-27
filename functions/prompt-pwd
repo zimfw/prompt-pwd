@@ -1,11 +1,14 @@
 # vim:et sts=2 sw=2 ft=zsh
 setopt LOCAL_OPTIONS EXTENDED_GLOB
 
-local git_root current_dir separator
+local git_root current_dir separator path_format
 local -i dir_length
+zstyle -s ':zim:prompt-pwd:path-format' format 'path_format' || path_format=""
 if zstyle -t ':zim:prompt-pwd' git-root && \
     git_root=$(command git rev-parse --show-toplevel 2>/dev/null); then
   current_dir="${$(pwd -P)#${git_root:h}/}"
+elif [[ -n $path_format ]]; then
+  current_dir="$path_format"
 else
   current_dir=${(%):-%~}
 fi
