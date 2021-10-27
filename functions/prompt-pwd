@@ -11,7 +11,7 @@ if zstyle -t ':zim:prompt-pwd' git-root && \
 elif [[ -n $path_format ]]; then
   current_dir="$path_format"
 elif [[ $path_length -gt 0 ]]; then
-  current_dir=%($((path_length+2))~|%-1~/.../%$path_length~|%$((path_length+1))~)
+  current_dir=%($((path_length+2))~|%-1~/.../%$path_length~|%~)
 else
   current_dir=${(%):-%~}
 fi
