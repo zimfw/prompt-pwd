@@ -4,7 +4,7 @@ setopt LOCAL_OPTIONS EXTENDED_GLOB
 local git_root current_dir separator path_format path_length
 local -i dir_length
 zstyle -s ':zim:prompt-pwd:path-format' format 'path_format' || path_format=""
-zstyle -s ':zim:prompt-pwd:path-length' format 'path_length' || path_length=0
+zstyle -s ':zim:prompt-pwd:path-length' path-length 'path_length' || path_length=0
 if zstyle -t ':zim:prompt-pwd' git-root && \
     git_root=$(command git rev-parse --show-toplevel 2>/dev/null); then
   current_dir="${$(pwd -P)#${git_root:h}/}"
