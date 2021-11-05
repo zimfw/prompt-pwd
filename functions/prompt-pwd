@@ -3,15 +3,25 @@ setopt LOCAL_OPTIONS EXTENDED_GLOB
 
 local git_root current_dir separator
 local -i dir_length
-if zstyle -t ':zim:prompt-pwd' git-root && \
-    git_root=$(command git rev-parse --show-toplevel 2>/dev/null); then
-  current_dir="${PWD#${git_root:h}/}"
+if zstyle -t ':zim:prompt-pwd' git-root; then
+  git_root=${PWD}
+  while true; do
+    if [[ -d ${git_root}/.git ]]; then
+      current_dir="${PWD#${git_root:h}/}"
+      break
+    fi
+    if [[ ${git_root} == / ]]; then
+      current_dir=${(%):-%~}
+      break
+    fi
+    git_root=${git_root:h}
+  done
 else
   current_dir=${(%):-%~}
 fi
-zstyle -s ':zim:prompt-pwd:separator' format 'separator' || separator='/'
+zstyle -s ':zim:prompt-pwd:separator' format 'separator' || separator=/
 zstyle -s ':zim:prompt-pwd:fish-style' dir-length 'dir_length' || dir_length=0
-if [[ ${dir_length} -gt 0 || ${separator} != '/' ]]; then
+if [[ ${dir_length} -gt 0 || ${separator} != / ]]; then
   local current_dirs=("${(@s:/:)current_dir}")
   if (( dir_length > 0 && ${#current_dirs} > 2 )); then
     current_dirs[2,-2]=("${(@M)current_dirs[2,-2]##.#?(#c,${dir_length})}")
