@@ -6,7 +6,7 @@ local -i dir_length
 if zstyle -t ':zim:prompt-pwd' git-root; then
   git_root=${PWD}
   while true; do
-    if [[ -d ${git_root}/.git ]]; then
+    if [[ -e ${git_root}/.git ]]; then
       current_dir="${PWD#${git_root:h}/}"
       break
     fi
