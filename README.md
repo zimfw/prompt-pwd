@@ -6,9 +6,14 @@ Formats the path to the current working directory to be used by prompts.
 Settings
 --------
 
-Use the following zstyle to enable truncating the path to the git root when in a git repo:
+Use the following zstyle to truncate the path to the git root when in a git repo:
 
     zstyle ':zim:prompt-pwd' git-root yes
+
+To truncate the number of trailing path components, use the following zstyle
+with a positive value:
+
+    zstyle ':zim:prompt-pwd:tail' length <value>
 
 To customize the maximum number of characters per path component, use:
 
