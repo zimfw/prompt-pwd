@@ -1,5 +1,5 @@
 # vim:et sts=2 sw=2 ft=zsh
-setopt LOCAL_OPTIONS EXTENDED_GLOB
+builtin emulate -L zsh -o EXTENDED_GLOB
 
 local git_root current_dir separator
 local -i tail_len dir_len
