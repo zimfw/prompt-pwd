@@ -22,12 +22,19 @@ To customize the maximum number of characters per path component, use:
 Setting the value to 0 will disable shortening entirely, which is the default
 behavior.
 
+To customize the format of a git root directory within the path, regardless if
+truncating the path to the git root is enabled or not, use:
+
+    zstyle ':zim:prompt-pwd:git-root' format '<format containing %d>'
+
+The occurrence of the `%d` code in the format string is substituted by the
+directory name.
+
 The default path separator is `/` and it can be customized using:
 
     zstyle ':zim:prompt-pwd:separator' format '<format>'
 
-You can include [prompt expansion escape sequences] in your custom separator
-format.
+You can include [prompt expansion escape sequences] in your custom formats.
 
 Theming
 -------
