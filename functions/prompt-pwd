@@ -41,7 +41,7 @@ if [[ ${__dir_len} -gt 0 || ${__separator} != / || ${__git_root_offset} -lt 0 ]]
     __current_dirs[2,-2]=("${(@M)__current_dirs[2,-2]##.#?(#c,${__dir_len})}")
   fi
   if (( __git_root_offset < 0 )); then
-    zformat -f __git_root ${__git_root_format} d:${__current_dirs[${__git_root_offset}]}
+    zformat -f __git_root ${(e)__git_root_format} d:${__current_dirs[${__git_root_offset}]}
     __current_dirs[${__git_root_offset}]=${__git_root}
   fi
   __separator=${(e)__separator}
